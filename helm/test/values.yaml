@@ -1,5 +1,5 @@
 
-namespace: valorquequisieramos
+namespace: ns1
 
 configmap:
   name: nombre
@@ -12,4 +12,20 @@ secret:
   type: kubernetes.io/basic-auth
 
 service:
+  name: servicio
+  app: selectorapp
   port: 80
+  targetPort: 80
+
+deployment:
+  name: nginxtest
+  label: ["env:pre"]
+  selector: 
+    name: sel
+  container:
+    name: nginx
+    image: nginx
+  resource:
+    limits:
+      memory: "64Mb"
+      cpu: "100m"

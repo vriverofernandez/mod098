@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Deployment
+metadata: 
+  name: {{ .Values.deployment.name }}
+  namespace: {{ .Values.namespace }}
+  labels: {{ .Values.deployment.label }}
+spec:
+  selector:
+    matchLabels:
+      app: {{  .Values.deployment.selector.name }}
+  spec:
+    containers:
+    - name: {{ .Values.deployment.container.name }}
+      image: {{ .Values.deployment.container.image }}
+    resource:
+      limits:
+        memory: {{ .Values.deployment.resource.limits.memory }}
+        cpu: {{ .Values.deployment.resource.limits.cpu }}
+    ports:
+    - containerPort: 80
