@@ -7,6 +7,9 @@ configmap:
 
 secret:
   name: nombre
-  user: user
-  pass: pass
+  user: "qqqqqqqq"
+  pass: "dddddddd"
   type: kubernetes.io/basic-auth
+
+service:
+  port: 80
